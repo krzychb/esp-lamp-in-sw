@@ -1,0 +1,107 @@
+import org.openhab.core.library.types.*
+import org.openhab.model.script.actions.*
+
+import org.openhab.action.squeezebox.*
+import java.util.concurrent.locks.ReentrantLock
+
+val java.util.Map<String, org.openhab.model.script.actions.Timer> timeOutTimers = newHashMap
+
+
+
+
+// convert diagnostic code to descriptive text
+val org.eclipse.xtext.xbase.lib.Functions$Function2 codeToMessage = [
+    org.openhab.core.library.items.NumberItem numberItem, org.openhab.core.library.items.StringItem stringItem |
+
+		var String diagMessage = "Unknown diagnostic code"
+    	var Number diagnosticCode = numberItem.state as DecimalType
+    	
+    	if(diagnosticCode > 0x00 && diagnosticCode < 0x80) { 
+			diagMessage = "Sequence is in progress"
+		} else {
+			if(diagnosticCode == 0x00) diagMessage = "Initial state"
+			if(diagnosticCode == 0x80) diagMessage = "Operation completed successfully"
+			if(diagnosticCode == 0x85) diagMessage = "The lamp is not ON"
+			if(diagnosticCode == 0x90) diagMessage = "The lamp is already ON"
+			if(diagnosticCode == 0x95) diagMessage = "The lamp is not OFF"
+			if(diagnosticCode == 0xA0) diagMessage = "The lamp is already OFF"
+			if(diagnosticCode == 0xA5) diagMessage = "Light intensity is already on target"
+			if(diagnosticCode == 0xB0) diagMessage = "Light intensity has been set on target"
+			if(diagnosticCode == 0xB5) diagMessage = "Unable to set light intensity on target"
+			if(diagnosticCode == 0xC0) diagMessage = "Operation timed out"
+			if(diagnosticCode == 0xC5) diagMessage = "Operation quit"
+		}
+    	postUpdate(stringItem, diagMessage)
+]
+
+
+// track communication timeout using timers
+val org.eclipse.xtext.xbase.lib.Functions$Function4 trackTimeout = [
+    org.openhab.core.library.items.StringItem stringItem, 
+    String timerKey, int timeoutPeriod, 
+    java.util.Map<String, org.openhab.model.script.actions.Timer> timers |
+			
+		timers.get(timerKey)?.cancel
+		
+		timers.put(timerKey, createTimer(now.plusSeconds(timeoutPeriod)) [|
+			logInfo("WatchDog", "Communication with ESP8266 " + timerKey + " LOST")
+			postUpdate(stringItem, "OFF")
+		])
+		postUpdate(stringItem, "ON")
+]
+
+
+rule "System Started"
+	when 
+		System started
+	then
+		logInfo("System", "OpenHab Restarted!")
+    	postUpdate(OH_HeartBeatDisable, OFF)
+end
+
+
+rule "Toggle Heart Beat"
+	when
+	    Time cron "*/2 * * * * ?"
+	then
+		// OpenHab Heart Beat
+		if(OH_HeartBeatDisable.state == OFF) 
+			sendCommand(OH_HeartBeat, if(OH_HeartBeat.state == ON) OFF else ON)
+		
+		// light switch testing
+		if(SA_S_Lamp_CronOn.state == ON) sendCommand(SA_S_Lamp_TOGGLE_ON, ON) 
+		if(SA_N_Lamp_CronOn.state == ON) sendCommand(SA_N_Lamp_TOGGLE_ON, ON) 
+		
+end
+
+
+//
+rule "SA_S_Lamp_Heap not updated as usual"
+	when
+		Item SA_S_Lamp_Heap received update
+	then
+		trackTimeout.apply(SA_S_Lamp_OnLine, "SA_S_Lamp", 70, timeOutTimers)
+end
+//
+rule "SA_N_Lamp_Heap not updated as usual"
+	when
+		Item SA_N_Lamp_Heap received update
+	then
+		trackTimeout.apply(SA_N_Lamp_OnLine, "SA_N_Lamp", 70, timeOutTimers)
+end
+
+
+//
+rule "Report operation status for SA_S_Lamp_STATUS"
+	when
+		Item SA_S_Lamp_STATUS received update
+	then
+		codeToMessage.apply(SA_S_Lamp_STATUS, SA_S_Lamp_Diag)
+end
+//
+rule "Report operation status for SA_N_Lamp_STATUS"
+	when
+		Item SA_N_Lamp_STATUS received update
+	then
+		codeToMessage.apply(SA_N_Lamp_STATUS, SA_N_Lamp_Diag)
+end

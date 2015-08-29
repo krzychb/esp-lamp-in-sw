@@ -1,0 +1,25 @@
+sitemap dom label="Hacking The Square"
+{
+	Text label="Two Squares" icon="settings"
+	{
+		Frame label="Light Switches"
+		{
+			Switch item=SA_S_Lamp_SW label="Square South"
+			Switch item=SA_N_Lamp_SW label="Square North"
+		}
+		Frame label="Light Intensity"
+		{
+			Slider item=SA_S_Lamp_BR_SP label="Square South [%d%%]"
+			Slider item=SA_N_Lamp_BR_SP label="Square North [%d%%]"
+		}
+		Frame label="Controller Diagnostics"
+		{
+			Group item=SalonSouthDiagnostics label="Salon South Light Switch" icon="settings"
+			Group item=SalonNorthDiagnostics label="Salon North Light Switch" icon="settings"
+			Text label="Heart Beat" icon="smiley" {
+				Text item=OH_HeartBeat
+				Switch item=OH_HeartBeatDisable
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+Group All
+Group OpenHab	(All)
+Group Salon	(All)
+Group SalonSouthDiagnostics	(All)
+Group SalonNorthDiagnostics	(All)
+
+
+/* OpenHab - 06 */
+Switch OH_HeartBeatDisable	"Disable OpenHab Heart Beat"					(OpenHab)
+Switch OH_HeartBeat			"OpenHab Heart Beat [%s]"		<heartbeat> 	(OpenHab)	{ mqtt=">[naszdysk:control/oh/00068601:command:ON:1], >[naszdysk:control/oh/00068601:command:OFF:0]" }
+
+
+/* Salon - Square South */
+Switch SA_S_Lamp_SW				"Ceiling Lamp South"					(Salon, SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:32], >[naszdysk:control/esp/00418404:command:OFF:48], <[naszdysk:sensor/esp/0041050f:state:default]" }
+Dimmer SA_S_Lamp_BR_SP			"Set Intensity [%d%%]"		<knob>		(Salon, SalonSouthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/00410d05:state:default], >[naszdysk:control/esp/00410c05:command:*:default" }
+String SA_S_Lamp_OnLine			"Communication Status [%s]"	<network>	(Salon, SalonSouthDiagnostics)
+/* Salon - Square South - Diagnostics */
+Number SA_S_Lamp_BR				"Light Intensity [%d%%]"	<slider>	(SalonSouthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/00410d05:state:default]"}
+Switch SA_S_Lamp_CronOn			"Cron Toggles Relay"		(SalonSouthDiagnostics)
+Switch SA_S_Lamp_TOGGLE_ON		"Send TOGGLE_ON"			(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:16]", autoupdate="false"}
+Switch SA_S_Lamp_POWER_ON		"Send POWER_ON"				(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:32]", autoupdate="false"}
+Switch SA_S_Lamp_POWER_OFF		"Send POWER_OFF"			(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:48]", autoupdate="false"}
+Switch SA_S_Lamp_SET_INTENSITY	"Send SET_INTENSITY"		(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:64]", autoupdate="false"}
+Switch SA_S_Lamp_CALIBRATE		"Send CALIBRATE"			(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:80]", autoupdate="false"}
+Switch SA_S_Lamp_REPORT_STATUS	"Send REPORT_STATUS"		(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:8]", autoupdate="false"}
+Switch SA_S_Lamp_QUIT			"Send QUIT"					(SalonSouthDiagnostics)	{ mqtt=">[naszdysk:control/esp/00418404:command:ON:0]", autoupdate="false"}
+Number SA_S_Lamp_STATUS			"Status [0x%x]"				(SalonSouthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/00418502:state:default]"}
+String SA_S_Lamp_Diag			"Operation Status [%s]"		(SalonSouthDiagnostics)
+Number SA_S_Lamp_Heap			"Heap (bytes) [%d]" 	<chart>		(SalonSouthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/00418309:state:default]"}
+
+
+/* Salon - Square North */
+Switch SA_N_Lamp_SW				"Ceiling Lamp South North"						(Salon, SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:32], >[naszdysk:control/esp/004b8404:command:OFF:48], <[naszdysk:sensor/esp/004b050f:state:default]" }
+Dimmer SA_N_Lamp_BR_SP			"Set Intensity [%d%%]"		<knob>		(Salon, SalonNorthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/004b0d05:state:default], >[naszdysk:control/esp/004b0c05:command:*:default" }
+String SA_N_Lamp_OnLine			"Communication Status [%s]"	<network>	(Salon, SalonNorthDiagnostics)
+/* Salon - Square North - Diagnostics*/
+Number SA_N_Lamp_BR				"Light Intensit [%d%%]"		<slider>	(SalonNorthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/004b0d05:state:default]"}
+Switch SA_N_Lamp_CronOn			"Cron Toggles Relay"		(SalonNorthDiagnostics)
+Switch SA_N_Lamp_TOGGLE_ON		"Send TOGGLE_ON"			(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:16]", autoupdate="false"}
+Switch SA_N_Lamp_POWER_ON		"Send POWER_ON"				(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:32]", autoupdate="false"}
+Switch SA_N_Lamp_POWER_OFF		"Send POWER_OFF"			(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:48]", autoupdate="false"}
+Switch SA_N_Lamp_SET_INTENSITY	"Send SET_INTENSITY"		(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:64]", autoupdate="false"}
+Switch SA_N_Lamp_CALIBRATE		"Send CALIBRATE"			(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:80]", autoupdate="false"}
+Switch SA_N_Lamp_REPORT_STATUS	"Send REPORT_STATUS"		(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:8]", autoupdate="false"}
+Switch SA_N_Lamp_QUIT			"Send QUIT"					(SalonNorthDiagnostics)	{ mqtt=">[naszdysk:control/esp/004b8404:command:ON:0]", autoupdate="false"}
+Number SA_N_Lamp_STATUS			"Status [0x%x]"				(SalonNorthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/004b8502:state:default]"}
+String SA_N_Lamp_Diag			"Operation Status [%s]"		(SalonNorthDiagnostics)
+Number SA_N_Lamp_Heap			"Heap (bytes) [%d]" 	<chart>		(SalonNorthDiagnostics)	{ mqtt="<[naszdysk:sensor/esp/004b8309:state:default]"}
