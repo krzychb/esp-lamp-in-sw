@@ -56,7 +56,7 @@ krzychb
 
 ##Donations
 
-Invite me to an orange juice
+Invite me to freshly squizzed orange juice.
 
 
 ##LICENSE - "MIT License"
