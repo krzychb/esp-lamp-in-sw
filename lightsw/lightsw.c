@@ -305,8 +305,8 @@ void ICACHE_FLASH_ATTR LightSW_RunSequence(uint32_t *args)
 	{
 		  if (system_get_time() > lamp->_stateTimer + POWER_ON_DURATION - ACCELERATE_DURATION)
 		  {
-	    	lamp->_stateTimer = system_get_time();
-	    	lamp->stateName = SET_INTENSITY__ACCELERATE;
+				lamp->_stateTimer = system_get_time();
+				lamp->stateName = SET_INTENSITY__ACCELERATE;
 		  }
 	}
 	else if (lamp->stateName == SET_INTENSITY__ACCELERATE)
