@@ -2,7 +2,9 @@
 
 This is  ESP8266 application to control electronic dimmable ballasts for fluorescent tubes.
 
-For additinal information  please refer to [Wiki](https://github.com/krzychb/esp_lamp_in_sw/wiki/).
+For additinal information  please refer to [Wiki](https://github.com/krzychb/esp_lamp_in_sw/wiki/), YouTube video [Hacking the Square](https://www.youtube.com/watch?v=OhAHjVcAv_0) and [ESP9266 forum](http://www.esp8266.com/viewtopic.php?f=11&t=4782).
+
+
 
 
 ##Tested with
