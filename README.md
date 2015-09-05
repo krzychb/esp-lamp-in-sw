@@ -1,7 +1,6 @@
 #esp_lamp_in_sw
 
 This is  ESP8266 application to control electronic dimmable ballasts for fluorescent tubes.
-Application communicates with external world using [MQTT client library for ESP8266 Soc](https://github.com/tuanpmt/esp_mqtt) (thanks). 
 
 For additinal information  please refer to [Wiki](https://github.com/krzychb/esp_lamp_in_sw/wiki/).
 
@@ -21,9 +20,9 @@ For additinal information  please refer to [Wiki](https://github.com/krzychb/esp
 * Calibrate
 
 
-##Compile
+##ESP9266 Application
 
-Firmware for ESP8266 has been developed, compiled and loaded using [Unofficial Development Kit for Espressif ESP8266 by Mikhail Grigorev](http://programs74.ru/udkew-en.html) (thanks)
+Application for ESP8266 has been developed, compiled and loaded using [Unofficial Development Kit for Espressif ESP8266 by Mikhail Grigorev](http://programs74.ru/udkew-en.html) (thanks) and  communicates with external world using [MQTT client library for ESP8266 Soc](https://github.com/tuanpmt/esp_mqtt) (thanks). 
 
 
 ##Required
