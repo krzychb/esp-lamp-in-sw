@@ -61,17 +61,17 @@
 //
 // operation statuses
 //
-#define OPERATION_STATUS__UNDEFINED 0x00
-#define OPERATION_STATUS__SUCCESFULL 0x80
-#define OPERATION_STATUS__NOT_ON 0x85
-#define OPERATION_STATUS__ALREADY_ON 0x90
-#define OPERATION_STATUS__NOT_OFF 0x95
-#define OPERATION_STATUS__ALREADY_OFF 0xA0
-#define OPERATION_STATUS__ALREADY_ON_TARGET 0xA5
-#define OPERATION_STATUS__ON_TARGET 0xB0
-#define OPERATION_STATUS__OFF_TARGET 0xB5
-#define OPERATION_STATUS__TIMEOUT 0xC0
-#define OPERATION_STATUS__QUIT 0xC5
+#define OPERATION_STATUS__UNDEFINED 0x00    // status of last operation is undefined
+#define OPERATION_STATUS__SUCCESFULL 0x80   // last operation completed successfully
+#define OPERATION_STATUS__NOT_ON 0x85       // failed to switch the lamp on
+#define OPERATION_STATUS__ALREADY_ON 0x90   // attempted to switch the lamp on while it is already on
+#define OPERATION_STATUS__NOT_OFF 0x95      // failed to switch the lamp off
+#define OPERATION_STATUS__ALREADY_OFF 0xA0  // attempted to switch the lamp off while it is already off
+#define OPERATION_STATUS__ALREADY_ON_TARGET 0xA5  // attempted to set light intensity to specific target while it is already on this target
+#define OPERATION_STATUS__ON_TARGET 0xB0    // the light intensity has been set on target
+#define OPERATION_STATUS__OFF_TARGET 0xB5   // failed to set the light intensity on target
+#define OPERATION_STATUS__TIMEOUT 0xC0      // sequence timeout
+#define OPERATION_STATUS__QUIT 0xC5         // sequence quit
 
 
 
