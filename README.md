@@ -2,7 +2,11 @@
 
 This is  ESP8266 application to control electronic dimmable ballasts for fluorescent tubes.
 
-For additinal information  please refer to [Wiki](https://github.com/krzychb/esp_lamp_in_sw/wiki/), YouTube video [Hacking the Square](https://www.youtube.com/watch?v=OhAHjVcAv_0) and [ESP9266 forum](http://www.esp8266.com/viewtopic.php?f=11&t=4782).
+| [![Hacking the Square - video on YouTube](https://github.com/krzychb/esp_lamp_in_sw/blob/master/documents/info-on-youtube.png)](https://www.youtube.com/watch?v=OhAHjVcAv_0) | [![esp_lamp_in_sw wiki on GitHub](https://github.com/krzychb/esp_lamp_in_sw/blob/master/documents/wiki-on-github.png)](https://github.com/krzychb/esp_lamp_in_sw/wiki/) | [![ESP8266 Forum](https://github.com/krzychb/esp_lamp_in_sw/blob/master/documents/esp8266-forum.png)](http://www.esp8266.com/viewtopic.php?f=11&t=4782) |
+| --- | --- | --- |
+| [Hacking the Square on YouTube](https://www.youtube.com/watch?v=OhAHjVcAv_0) | [Wiki on GitHub](https://github.com/krzychb/esp_lamp_in_sw/wiki/) | [ESP8266 Forum](http://www.esp8266.com/viewtopic.php?f=11&t=4782) |
+
+For additinal information  please refer to YouTube video [Hacking the Square](https://www.youtube.com/watch?v=OhAHjVcAv_0), [Wiki](https://github.com/krzychb/esp_lamp_in_sw/wiki/) and [ESP9266 forum](http://www.esp8266.com/viewtopic.php?f=11&t=4782).
 
 
 
