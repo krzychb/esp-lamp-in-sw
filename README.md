@@ -1,4 +1,4 @@
-#esp_lamp_in_sw
+#esp-lamp-in-sw
 
 This is  ESP8266 application to control electronic dimmable ballasts for fluorescent tubes.
 
