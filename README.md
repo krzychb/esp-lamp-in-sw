@@ -26,7 +26,7 @@ For additional information please refer to YouTube video [Hacking the Square](ht
 * Calibrate
 
 
-##ESP9266 Application
+##ESP8266 Application
 
 Application for ESP8266 has been developed, compiled and loaded using [Unofficial Development Kit for Espressif ESP8266 by Mikhail Grigorev](http://programs74.ru/udkew-en.html) (thanks) and  communicates with external world using [MQTT client library for ESP8266 Soc](https://github.com/tuanpmt/esp_mqtt) (thanks). 
 
